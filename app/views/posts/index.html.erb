@@ -1,0 +1,7 @@
+<h1>All Posts</h1>
+
+<% @posts.each do |post|  %>
+  <li><%= link_to post.postname, post_path(post) %></li>
+  <li><%= post.name %></li>
+  <img src="<%= post.profile_pic %>">
+<% end %>
