@@ -3,5 +3,12 @@ Rails.application.routes.draw do
   resources :categories
   resources :posts
   resources :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  get "/signup", to: "users#new", as: "signup"
+  post '/users', to: "users#create"
+  # our login logic
+  get "/login", to: "sessions#new"
+  post "/sessions", to: "sessions#create", as: "sessions"
+
+  delete "sessions", to: "sessions#destroy"
 end

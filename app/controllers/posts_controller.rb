@@ -1,6 +1,18 @@
 class PostsController < ApplicationController
+
   def index
-    @posts = Post.all
+    # @posts = Post.all
+    # if session[:user_id]
+    #   @user = User.find(session[:user_id])
+    #   @posts = @user.posts
+    # else
+    #   @posts = Post.all # or force a login
+    # end
+    if logged_in?
+      @posts = current_user.posts
+    else
+      @posts = Post.all # or force a login
+    end
   end
 
   def new
