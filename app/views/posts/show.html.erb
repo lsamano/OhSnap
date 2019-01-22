@@ -1,7 +1,12 @@
-<h1>Post</h1>
-<p>Posted by: <%= link_to @user.username, user_path(@user) %></p>
+<h1><%= @post.caption %></h1>
+<h4>Posted by: <%= link_to @user.username, user_path(@user) %></h4>
 <img src="<%= @post.image %>">
-<p><%= @post.caption %></p>
+
+<ul>
+<% @categories.each do |category|%>
+<li><%= category.name %></li>
+<% end %>
+</ul>
 <br>
 <hr>
 <%= button_to "Edit Post", edit_post_path(@post), method: :get %>

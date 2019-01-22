@@ -5,5 +5,18 @@
   <%= f.label :caption %>
   <%= f.text_field :caption %>
   <%= f.collection_select :user_id, @users, :id, :username %>
+
+
+    <input name="post[category_names][]" list="categories_autocomplete" >
+    <input name="post[category_names][]" list="categories_autocomplete" >
+    <input name="post[category_names][]" list="categories_autocomplete" >
+
+    <datalist id="categories_autocomplete">
+      <% @categories.each do |category| %>
+        <option value="<%= category.name %>">
+      <% end %>
+    </datalist>
+
+
   <%= f.submit %>
 <% end %>
