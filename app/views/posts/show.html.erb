@@ -1,21 +1,35 @@
 <h1><%= @post.caption %></h1>
 <h4>Posted by: <%= link_to @user.username, user_path(@user) %></h4>
 <%= image_tag @post.image %>
-
+<h3>Categories</h3>
 <ul>
 <% @categories.each do |category|%>
 <li><%= category.name %></li>
 <% end %>
 </ul>
-<br>
 
-<%= form_for @comment do |f| %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.hidden_field :post_id, value: @post.id %>
-  <%= f.text_area :contents %>
 
-  <%= f.submit "⇨" %>
+<% if @liked %>
+  <div class="liked">
+    Liked <i class="fa fa-thumbs-o-up" style="font-size:24px"></i> + <%= @number_of_likes %>
+    <%= button_to "Unlike", like_path(@liked), method: :delete  %>
+  </div>
+  <% else %>
+  <%= form_for @like do |f| %>
+    <%= f.hidden_field :user_id, value: current_user.id%>
+    <%= f.hidden_field :post_id, value: @post.id %>
+    <%= f.submit "Like" %> + <%= @number_of_likes %>
+  <% end %>
 <% end %>
+
+<br>
+  <%= form_for @comment do |f| %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :post_id, value: @post.id %>
+    <%= f.text_area :contents %>
+
+    <%= f.submit "⇨" %>
+  <% end %>
 
 <div class="all_comments">
   <% @post.comments.each do |comment| %>

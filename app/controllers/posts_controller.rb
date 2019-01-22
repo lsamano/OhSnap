@@ -1,13 +1,7 @@
 class PostsController < ApplicationController
 
   def index
-    # @posts = Post.all
-    # if session[:user_id]
-    #   @user = User.find(session[:user_id])
-    #   @posts = @user.posts
-    # else
-    #   @posts = Post.all # or force a login
-    # end
+    @comment = Comment.new
     if logged_in?
       @posts = current_user.posts
     else
@@ -42,6 +36,10 @@ class PostsController < ApplicationController
     @user = User.find(@post.user_id)
     @categories = @post.categories
     @comment = Comment.new
+
+    @liked = Like.find_by(user: current_user, post: @post)
+    @like = Like.new
+    @number_of_likes = @post.likes.count
     # byebug
   end
 

@@ -3,7 +3,7 @@
 <% @posts.each do |post| %>
   <li>Posted by <%= link_to post.user.username, user_path(post.user) %></li>
   <li><%= post.caption %> <%= link_to "See This Post", post_path(post) %></li>
-  <img src="<%= post.image %>">
+  <%= image_tag post.image %>
   <br>
   <hr>
 <% end %>

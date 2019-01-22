@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :posts
   resources :users
   resources :comments
+  resources :likes
 
   get "/signup", to: "users#new", as: "signup"
   post '/users', to: "users#create"
