@@ -38,6 +38,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @user = User.find(@post.user_id)
     @categories = @post.categories
+    @comment = Comment.new
     # byebug
   end
 
@@ -64,6 +65,11 @@ class PostsController < ApplicationController
   def destroy
     Post.find(params[:id]).destroy
     redirect_to posts_path
+  end
+
+  def feed
+    @posts = Post.all.reverse
+    @comment = Comment.new
   end
 
   private

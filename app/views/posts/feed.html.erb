@@ -1,0 +1,29 @@
+<h1>Recent Posts</h1>
+
+<% @posts.each do |post|  %>
+  <p><%= link_to post.user.username, user_path(post.user) %>:</p>
+  <li><%= post.caption %> <%= link_to "See This Post", post_path(post) %></li>
+  <img src="<%= post.image %>">
+  <br>
+  <div class="comments">
+    <h3>Comments</h3>
+
+    <div class="all_comments">
+      <% post.comments.each do |comment| %>
+        <%= link_to comment.user.username, user_path(comment.user) %> :
+        <br>
+        <%= comment.contents %>
+        <br>
+      <% end %>
+    </div>
+
+    <%= form_for @comment do |f| %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :post_id, value: post.id %>
+      <%= f.text_area :contents %>
+
+      <%= f.submit "⇨" %>
+    <% end %>
+  </div>
+  <hr>
+<% end %>
