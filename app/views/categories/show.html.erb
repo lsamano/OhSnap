@@ -1,7 +1,7 @@
-<h1>All Posts</h1>
+<h1><%= @category.name %></h1>
 
-<% @posts.each do |post|  %>
-  <p><%= link_to post.user.username, user_path(post.user) %>:</p>
+<% @posts.each do |post| %>
+  <li>Posted by <%= link_to post.user.username, user_path(post.user) %></li>
   <li><%= post.caption %> <%= link_to "See This Post", post_path(post) %></li>
   <img src="<%= post.image %>">
   <br>

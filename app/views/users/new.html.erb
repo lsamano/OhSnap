@@ -20,8 +20,13 @@
           </p>
 
           <p>
+            <%= f.label :password_confirmation %>
+            <%= f.text_field :password_confirmation %>
+          </p>
+
+          <p>
             <%= f.label :profile_pic %>
-            <%= f.text_field :profile_pic %>
+            <%= f.text_field :profile_pic, autocomplete: :off %>
           </p>
 
           <p class="submit">
