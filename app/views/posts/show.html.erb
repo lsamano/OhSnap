@@ -1,6 +1,6 @@
 <h1><%= @post.caption %></h1>
 <h4>Posted by: <%= link_to @user.username, user_path(@user) %></h4>
-<img src="<%= @post.image %>">
+<%= image_tag @post.image %>
 
 <ul>
 <% @categories.each do |category|%>

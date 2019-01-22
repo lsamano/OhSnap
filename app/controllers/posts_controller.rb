@@ -30,6 +30,9 @@ class PostsController < ApplicationController
       postcat = PostCategory.find_or_create_by(post: @post, category: category)
       redirect_to post_path(@post)
     else
+      @users = User.all
+      @post_categories = @post.category_names
+      @categories = Category.all
       render :new
     end
   end

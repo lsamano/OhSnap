@@ -1,11 +1,13 @@
 <h1>New Post</h1>
-<%= form_for @post do |f| %>
+<%= form_for @post, multipart: true do |f| %>
   <%= f.label :image %>
-  <%= f.text_field :image, autocomplete: :off %><br>
+  <%= f.file_field :image %><br>
   <%= f.label :caption %>
   <%= f.text_field :caption %><br>
   <%= f.label :user_id %>
   <%= f.collection_select :user_id, @users, :id, :username %>
+
+
 
     <br>
     <label for="post[category_names][]">Categories</label>
