@@ -10,6 +10,10 @@
   </head>
 
   <body>
+    <h2>ÖhSnap</h2>
+    <h3><%= link_to "+ Post", new_post_path %> • <%= link_to "Timeline", posts_path %> • <%= link_to "All Users", users_path %></h3>
+    <hr>
+    <br>
     <%= yield %>
   </body>
 </html>
