@@ -1,10 +1,10 @@
 <h1>New User</h1>
 <%= form_for @user do |f| %>
   <%= f.label :name %>
-  <%= f.text_field :name %>
+  <%= f.text_field :name %><br>
   <%= f.label :username %>
-  <%= f.text_field :username %>
+  <%= f.text_field :username %><br>
   <%= f.label :profile_pic %>
-  <%= f.text_field :profile_pic %>
+  <%= f.text_field :profile_pic, autocomplete: :off  %><br>
   <%= f.submit %>
 <% end %>

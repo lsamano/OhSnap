@@ -1,12 +1,12 @@
 <h1>Edit Post</h1>
 <%= form_for @post do |f| %>
   <%= f.label :image %>
-  <%= f.text_field :image %>
+  <%= f.text_field :image, autocomplete: :off  %><br>
   <%= f.label :caption %>
-  <%= f.text_field :caption %>
+  <%= f.text_field :caption %><br>
   <%= f.hidden_field :user_id, value: @post.user_id %>
 
-
+    <label for="post[category_names][]">Categories</label>
     <input name="post[category_names][]" list="categories_autocomplete" value="<%= @post_categories[0] %>" >
     <input name="post[category_names][]" list="categories_autocomplete" value="<%= @post_categories[1] %>" >
     <input name="post[category_names][]" list="categories_autocomplete" value="<%= @post_categories[2] %>" >

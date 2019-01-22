@@ -10,9 +10,13 @@
   </head>
 
   <body>
-    <h2>ÖhSnap</h2>
-    <h3><%= link_to "+ Post", new_post_path %> • <%= link_to "Timeline", posts_path %> • <%= link_to "All Users", users_path %></h3>
-    <hr>
+    <div class="navbar">
+      <%= link_to "+ Post", new_post_path %>
+        <%= link_to "+ User", new_user_path %>
+        <%= link_to "Timeline", posts_path %>
+        <%= link_to "All Users", users_path %>
+    </div>
+    <br>
     <br>
     <%= yield %>
   </body>

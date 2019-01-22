@@ -13,3 +13,40 @@
  *= require_tree .
  *= require_self
  */
+
+ /* The below was added from https://www.w3schools.com/howto/howto_css_fixed_menu.asp */
+ /* The navigation bar */
+.navbar {
+  overflow: hidden;
+  background-color: #f60;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+}
+
+/* Links inside the navbar */
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 12px 18px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Change background on mouse-over */
+.navbar a:hover {
+  background: #fff;
+  color: #f60;
+}
+
+/* Main content */
+h1 {
+  font-family: "Arial Black", Gadget, sans-serif;
+}
+
+img {
+    width: 45%;
+    height: auto;
+}
