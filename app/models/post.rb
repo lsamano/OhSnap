@@ -4,6 +4,8 @@ class Post < ApplicationRecord
   has_many :likes
   has_many :post_categories
   has_many :categories, through: :post_categories
+  has_many :liked_users, through: :likes, source: :user
+  has_many :commented_users, through: :comments, source: :user
   has_one_attached :image
 
   #Validations
@@ -12,7 +14,7 @@ class Post < ApplicationRecord
   ### Methods
   # Validates image is attached
   def image_presence
-    errors.add(:image, "can't be blank") unless image.attached?
+    errors.add(:image, "Image must be attached.") unless image.attached?
   end
 
   # Custom setter for category names
