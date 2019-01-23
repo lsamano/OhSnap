@@ -1,4 +1,4 @@
-<h1><%= @post.caption %></h1>
+<blockquote class="blockquote"><p class="mb-0"><%= @post.caption %></p></blockquote>
 <h4>Posted by: <%= link_to @user.username, user_path(@user) %></h4>
 <%= image_tag @post.image %>
 <h3>Categories</h3>
@@ -11,8 +11,9 @@
 
 <% if @liked %>
   <div class="liked">
-    Liked <i class="fa fa-thumbs-o-up" style="font-size:24px"></i> + <%= @number_of_likes %>
-    <%= button_to "Unlike", like_path(@liked), method: :delete  %>
+    <%= link_to "Unlike", like_path(@liked), method: :delete  %>
+    <i class="fa fa-thumbs-o-up" style="font-size:24px"></i> + <%= @number_of_likes %>
+
   </div>
   <% else %>
   <%= form_for @like do |f| %>
