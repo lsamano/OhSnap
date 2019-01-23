@@ -1,0 +1,29 @@
+<h1><%= @user.username %></h1>
+<h2>Following - <%= @user.followeds.count %> </h2>
+
+<% @user.followeds.each do |f| %>
+  <div class="followeds_div">
+    <%= image_tag f.profile_pic %>
+    <%= link_to f.username, user_path(f) %>
+  </div>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>Followers - <%= @user.followers.count %> </h2>
+<% @user.followers.each do |f| %>
+<div class="followers_div">
+  <%= image_tag f.profile_pic %>
+  <%= link_to f.username, user_path(f) %>
+</div>
+<% end %>

@@ -2,9 +2,29 @@
 <%= image_tag @user.profile_pic %>
 <p>Hello, <%= @user.name %>.</p>
 <p>Username: <%= @user.username %></p>
+
+
+<% if @already_following %>
+  <%= button_to "Unfollow", follow_path(@already_following), method: :delete  %>
+<% else %>
+  <%= form_for @follow do |f| %>
+    <%= f.hidden_field :follower_id, value: current_user.id %>
+    <%= f.hidden_field :followed_id, value: @user.id %>
+    <%= f.submit "Follow" %>
+  <% end %>
+<% end %>
+
+<!-- FOLLOWERS -->
+ <%= link_to "Following:  #{@user.following_follows.count}" , follows_with_path(@user) %>
+ <%= link_to "Followers:  #{@user.followed_follows.count}" , follows_with_path(@user) %>
+<!-- END OF FOLLOWERS -->
+
+
 <br>
-<%= button_to "Edit Profile", edit_user_path(@user), method: :get %>
-<%= button_to "Delete Profile", user_path(@user), data: {:confirm => "Are you sure you want to delete your profile? \nThis cannot be undone."}, method: :delete %>
+<% if current_user == @user %>
+  <%= button_to "Edit Profile", edit_user_path(@user), method: :get %>
+  <%= button_to "Delete Profile", user_path(@user), data: {:confirm => "Are you sure you want to delete your profile? \nThis cannot be undone."}, method: :delete %>
+<% end %>
 <hr>
 <br>
 <h2>All of <%= @user.username %>'s Posts</h2>

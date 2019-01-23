@@ -17,6 +17,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts
+    @already_following = Follow.find_by(follower_id: current_user.id, followed_id: @user.id)
+    @follow = Follow.new
   end
 
   def edit
@@ -37,6 +39,12 @@ class UsersController < ApplicationController
   def destroy
     User.find(params[:id]).destroy
     redirect_to users_path
+  end
+
+  def follow
+    @user = User.find(params[:id])
+    @followers = @user.followers
+    @followeds = @user.followeds
   end
 
   private

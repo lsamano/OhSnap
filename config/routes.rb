@@ -5,9 +5,11 @@ Rails.application.routes.draw do
   resources :users
   resources :comments
   resources :likes
+  resources :follows
 
   get "/signup", to: "users#new", as: "signup"
   post '/users', to: "users#create"
+  get "/users/:id/follow", to: "users#follow", as: "follows_with"
   # our login logic
   get "/feed", to: "posts#feed", as: "feed"
 
