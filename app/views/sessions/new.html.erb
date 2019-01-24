@@ -1,7 +1,20 @@
-<%= form_tag sessions_path do %>
-  <%= label_tag :username %>
-  <%= text_field_tag :username %>
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
-  <%= submit_tag "Login" %>
-<% end %>
+
+<div class="session_wrapper form-signin">
+    <h2 class="form-signin-heading"><span>Öh</span>Snap</h2>
+    <%= form_tag sessions_path do %>
+    <input type="text" class="form-control" name="username" placeholder="Username" required="" autofocus="" />
+    <input type="password" class="form-control" name="password" placeholder="Password" required=""/>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+    <% end %>
+</div>
+
+<!-- <div class="wrapper form-signin">
+    <h2 class="form-signin-heading" >Please login</h2>
+      <%# form_tag sessions_path do %>
+        <%# label_tag :username %>
+        <%# text_field_tag :username %>
+        <%# label_tag :password %>
+        <%# password_field_tag :password %>
+        <%# submit_tag "Login" %>
+      <%# end %>
+</div> -->

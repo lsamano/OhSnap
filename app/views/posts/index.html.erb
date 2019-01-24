@@ -1,29 +1,32 @@
 <h1>My Timeline</h1>
 
 <% @posts.each do |post|  %>
-  <p><%= link_to post.user.username, user_path(post.user) %>:</p>
-  <li><%= post.caption %> <%= link_to "See This Post", post_path(post) %></li>
-  <%= image_tag post.image %>
-  <br>
+
+<div class="post_container">
+  <div class="posts">
+    <p><%= link_to post.user.username, user_path(post.user) %>:</p>
+    <%= image_tag post.image, class: "post_img" %>
+    <%= link_to post.caption, post_path(post), class: "post_caption" %>
+  </div>
+
   <div class="comments">
     <h3>Comments</h3>
-
     <div class="all_comments">
       <% post.comments.each do |comment| %>
-        <%= link_to comment.user.username, user_path(comment.user) %> :
-        <br>
-        <%= comment.contents %>
-        <br>
+      <%= link_to comment.user.username, user_path(comment.user) %> :
+      <br>
+      <%= comment.contents %>
+      <br>
       <% end %>
     </div>
-
     <%= form_for @comment do |f| %>
-      <%= f.hidden_field :user_id, value: current_user.id %>
-      <%= f.hidden_field :post_id, value: post.id %>
-      <%= f.text_area :contents %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :post_id, value: post.id %>
+    <%= f.text_area :contents %>
 
-      <%= f.submit "⇨" %>
+    <%= f.submit "⇨" %>
     <% end %>
   </div>
+</div>
   <hr>
 <% end %>
