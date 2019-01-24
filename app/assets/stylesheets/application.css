@@ -14,11 +14,6 @@
  *= require_self
  */
 
- /* #navbar-nav {
-   width: 100%;
-   display: flex;
- } */
-
  #nav_greeting {
    color: #f2f2f2;
    padding: 12px 18px;
@@ -33,6 +28,10 @@
 
 #logo {
   font-family: 'Montserrat', sans-serif;
+}
+
+span {
+  color: #79BAEC;
 }
 
 img {

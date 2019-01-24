@@ -1,36 +1,37 @@
 <div class="container">
   <h1 class="brand"> <span>Oh</span>Snap</h1>
-  <div class="wrapper"> <!-- this is where we are putting the grid -->
-    <h2 class="brand">New User</h2>
+  <div class="new_wrapper"> <!-- this is where we are putting the grid -->
+    <h2 class="h2login">New User</h2>
         <%= form_for @user do |f| %>
         <!-- <form> -->
           <p>
             <%= f.label :name %>
-            <%= f.text_field :name %>
+            <%= f.text_field :name, class: "form-control"%>
           </p>
 
           <p>
             <%= f.label :username %>
-            <%= f.text_field :username %>
+            <%= f.text_field :username, class: "form-control" %>
           </p>
 
           <p>
             <%= f.label :password %>
-            <%= f.text_field :password %>
+            <%= f.text_field :password, class: "form-control" %>
           </p>
 
           <p>
             <%= f.label :password_confirmation %>
-            <%= f.text_field :password_confirmation %>
+            <%= f.text_field :password_confirmation, class: "form-control" %>
           </p>
 
           <p>
             <%= f.label :profile_pic %>
-            <%= f.file_field :profile_pic %>
+            <%= f.file_field :profile_pic, class: "form-control" %>
           </p>
 
-          <p class="submit">
-            <%= f.submit %>
+
+          <p class="new_submit">
+            <%= f.submit class: "btn btn-outline-primary" %>
           </p>
           <!-- </form> -->
         <% end %>
