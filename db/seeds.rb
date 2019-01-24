@@ -34,7 +34,7 @@
      password_digest: BCrypt::Password.create('abc')
   )
   s.profile_pic.attach({
-     io: open("https://robohash.org/#{Faker::Lorem.characters(10)}?set=set4"),
+     io: open("https://loremflickr.com/300/300"),
      filename: "#{n}_faker_image.jpg"
   })
 end
@@ -43,9 +43,14 @@ User.all.each do |user|
   2.times do |time|
     post = Post.new(caption: Faker::Lorem.sentence, user: user)
     post.image.attach({
-       io: open("http://lorempixel.com/300/300"),
+       io: open("https://loremflickr.com/300/300"),
        filename: "post_#{post.id}_faker_image.jpg"
     })
     post.save
+    number = rand(1..3)
+    cats = Category.all.sample(number)
+      cats.each do |cat|
+        PostCategory.create(post: post, category: cat)
+      end
   end
 end

@@ -76,3 +76,25 @@ h1 {
 .new_submit {
   padding: 25px;
 }
+
+.users_container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  text-align: center;
+}
+
+.container.center {
+  justify-content: center;
+}
+
+.col-sm {
+  margin-bottom: 3rem;
+  text-align: center;
+  align-self: center;
+}
+
+.card {
+  text-align: center;
+  align-content: center;
+}

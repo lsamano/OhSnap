@@ -1,7 +1,21 @@
 <h1>Categories</h1>
 
-<div class="category_wrapper">
-  <% @categories.each do |category|  %>
-  <div class="category_link"><%= link_to category.name, category_path(category) %></div>
-  <% end %>
+<div class="users_container">
+  <div class="row">
+    <% @categories.each do |category|  %>
+      <div class="col-sm">
+        <div class="card" style="width: 18.9rem;">
+
+          <% post = category.posts[-1] %>
+          <% unless post == nil %>
+          <%= image_tag post.image %>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= category.name %></h5>
+            <a href="<%= category.name %>" class="btn btn-primary">See Profile</a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
