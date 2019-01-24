@@ -1,6 +1,16 @@
 <h1>User Profiles</h1>
-
-<% @users.each do |user|  %>
-  <li><%= link_to user.username, user_path(user) %></li>
-  <%= image_tag user.profile_pic %>
-<% end %>
+<div class="users_container">
+  <div class="row">
+      <% @users.each do |user|  %>
+      <div class="col-sm">
+      <div class="card" style="width: 18rem;">
+        <%= image_tag user.profile_pic, class:"card-img-top" %>
+        <div class="card-body">
+          <h5 class="card-title"><%= user.username %></h5>
+          <a href="<%= user_path(user) %>" class="btn btn-primary">See Profile</a>
+        </div>
+      </div>
+    </div>
+      <% end %>
+  </div>
+</div>
