@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class="brand"> <span>Oh</span>Snap</h1>
+  <h1 class="brand"> <span class="oh">Öh</span>Snap</h1>
   <div class="new_wrapper"> <!-- this is where we are putting the grid -->
     <h2 class="h2login">New User</h2>
         <%= form_for @user do |f| %>
@@ -16,16 +16,16 @@
 
           <p>
             <%= f.label :password %>
-            <%= f.text_field :password, class: "form-control" %>
+            <%= f.password_field :password, class: "form-control" %>
           </p>
 
           <p>
-            <%= f.label :password_confirmation %>
-            <%= f.text_field :password_confirmation, class: "form-control" %>
+            <%= f.label :password_confirmation, "Password Confirmation" %>
+            <%= f.password_field :password_confirmation, class: "form-control" %>
           </p>
 
           <p>
-            <%= f.label :profile_pic %>
+            <%= f.label :profile_pic, "Profile Picture" %>
             <%= f.file_field :profile_pic, class: "form-control" %>
           </p>
 
