@@ -1,9 +1,17 @@
 <h1><%= @category.name %></h1>
 
-<% @posts.each do |post| %>
-  <li>Posted by <%= link_to post.user.username, user_path(post.user) %></li>
-  <li><%= post.caption %> <%= link_to "See This Post", post_path(post) %></li>
-  <%= image_tag post.image %>
-  <br>
-  <hr>
-<% end %>
+<div class="users_container">
+  <div class="row">
+    <% @posts.each do |post| %>
+      <div class="col-sm">
+        <div class="card" style="width: 18.9rem;">
+          <%= image_tag post.image %>
+          <div class="card-body">
+            <h5 class="card-title"><%= post.caption %></h5>
+            <a href="<%= post_path(post) %>" class="btn btn-primary">See This Post</a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
