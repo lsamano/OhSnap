@@ -29,3 +29,8 @@
 span {
   color: #79BAEC;
 }
+
+img {
+    width: 45%;
+    height: auto;
+}
