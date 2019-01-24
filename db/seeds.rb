@@ -43,7 +43,7 @@ User.all.each do |user|
   2.times do |time|
     post = Post.new(caption: Faker::Lorem.sentence, user: user)
     post.image.attach({
-       io: open("http://lorempixel.com/300/300"),
+       io: open("http://loremflickr.com/300/300"),
        filename: "post_#{post.id}_faker_image.jpg"
     })
     post.save
