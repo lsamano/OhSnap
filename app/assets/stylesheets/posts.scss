@@ -17,3 +17,9 @@
 .post_caption {
   margin-left: 50px;
 }
+
+.posts {
+  background-color: pink;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+}
