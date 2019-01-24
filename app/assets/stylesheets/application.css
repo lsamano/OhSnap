@@ -34,3 +34,16 @@ img {
     width: 45%;
     height: auto;
 }
+
+.nav_bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.right_nav {
+  float: right;
+}
+
+.nav-item {
+  letter-spacing: 2px;
+}

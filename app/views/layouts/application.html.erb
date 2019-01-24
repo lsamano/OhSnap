@@ -14,17 +14,15 @@
 
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="fixed-navbar">
-  <a class="navbar-brand" href="#"><span>Öh</span>Snap</a>
+  <a class="navbar-brand" href="#"><span class="oh">Öh</span>Snap</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
+      <% if logged_in? %>
       <li class="nav-item active">
         <a class="nav-link active" href="<%= new_post_path %>">+ Post <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="<%= new_user_path %>">+ Sign Up</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="<%= posts_path %>">My Timeline</a>
@@ -39,19 +37,25 @@
         <a class="nav-link" href="<%= feed_path %>">Feed</a>
       </li>
       <li class="nav-item">
-        <% if logged_in? %>
         <%= link_to "Logout", sessions_path, method: :delete, class: "nav-link" %>
-        <% end %>
       </li>
+      <% else %>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= login_path %>">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= new_user_path %>">Sign Up</a>
+        </li>
+        <% end %>
     </ul>
-    <% if logged_in? %>
-      <span class="navbar-text" id="nav_greeting">
-        Hello, <%= current_user.name %>!!
-      </span>
-      <% end %>
   </div>
 </nav>
 
+<% if logged_in? %>
+  <span class="navbar-text" id="nav_greeting">
+    Hello, <%= current_user.name %>!!
+  </span>
+<% end %>
     <br>
     <br>
     <br>

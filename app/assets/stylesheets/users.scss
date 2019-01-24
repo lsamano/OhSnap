@@ -15,7 +15,7 @@ body {
 }
 
 .container {
-  max-width: 1170px; // because we want it to be responseive
+  max-width: 1000px; // because we want it to be responseive
   margin-left: auto;
   margin-right: auto;
   padding: 1em;
@@ -28,14 +28,12 @@ body {
 .new_wrapper {
   box-shadow: 0 0 20px 0 rgba(72, 94, 116, 0.7);
   background-color: #f9feff;
-  border-radius: 1%;
+  border-radius: 10%;
 
 }
 
 .new_wrapper > * { // everything inside our wrapper
   padding: 1em;
-  border-radius: 1%;
-
 }
 
 .new_wrapper form {
