@@ -36,6 +36,9 @@
         <a class="nav-link" href="<%= categories_path %>">Categories</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="<%= feed_path %>">Feed</a>
+      </li>
+      <li class="nav-item">
         <% if logged_in? %>
           <%= link_to "Logout", sessions_path, method: :delete, class: "nav-link" %>
         <% end %>

@@ -30,3 +30,8 @@
   position: fixed;
   width: 100%;
 }
+
+img {
+    width: 45%;
+    height: auto;
+}

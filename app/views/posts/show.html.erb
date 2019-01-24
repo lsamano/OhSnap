@@ -1,5 +1,7 @@
-<blockquote class="blockquote"><p class="mb-0"><%= @post.caption %></p></blockquote>
-<h4>Posted by: <%= link_to @user.username, user_path(@user) %></h4>
+<blockquote class="blockquote">
+  <h1 class="mb-0"><%= @post.caption %></h1>
+  <footer class="blockquote-footer">Posted by: <%= link_to @user.username, user_path(@user) %></footer>
+</blockquote>
 <%= image_tag @post.image %>
 <h3>Categories</h3>
 <ul>
