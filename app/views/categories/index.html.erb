@@ -5,7 +5,6 @@
     <% @categories.each do |category|  %>
       <div class="col-sm">
         <div class="card" style="width: 18.9rem;">
-
           <% post = category.posts[-1] %>
           <% unless post == nil %>
           <%= image_tag post.image %>
