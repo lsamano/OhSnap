@@ -1,25 +1,54 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+* {
+  padding: 0;
+  margin: 0;
+}
+
+// .split_two {
+//   display: grid;
+//   margin: 0 auto;
+//   grid-template-columns: 1fr 1fr;
+// }
 
 .post_container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.post_img {
-  width: 80%;
-  height: 80%;
-  border: 2px solid white;
-  margin: 50px;
+.split_two {
+  margin-bottom: 20px;
 }
 
-.post_caption {
-  margin-left: 50px;
+.post_cap {
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
+// .post_img {
+//   width: 80%;
+//   height: 80%;
+//   border: 2px solid white;
+// }
 
-.posts {
-  background-color: pink;
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
-}
+// .posts {
+//   display: grid;
+//   grid-template-rows: .1fr .1fr .1fr;
+//   text-align: center;
+// }
+
+// .post_caption_div {
+//   margin-right: 50px;
+// }
+//
+// .post_user_div {
+//   margin-right: 40px;
+//   margin-bottom: 5%;
+//   font-size: 1.5rem;
+// }
+
+
+// .post_wrapper {
+//   display: grid;
+//   grid-template-columns: 1fr 1fr;
+// }

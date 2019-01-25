@@ -3,7 +3,8 @@
 <% @posts.each do |post|  %>
 
 <div class="post_container">
-  <div class="posts">
+  <div class="row">
+  <div class="posts col-sm">
     <div class="post_user_div">
       <%= link_to post.user.username, user_path(post.user) %>
     </div>
@@ -15,7 +16,7 @@
     </div>
   </div>
 
-  <div class="comments">
+  <div class="comments col-sm">
     <h3>Comments</h3>
     <div class="all_comments">
       <% post.comments.each do |comment| %>
@@ -32,6 +33,7 @@
 
     <%= f.submit "⇨" %>
     <% end %>
+  </div>
   </div>
 </div>
   <hr>

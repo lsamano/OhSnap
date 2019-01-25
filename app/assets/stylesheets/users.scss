@@ -15,7 +15,7 @@ body {
 }
 
 .container {
-  max-width: 1000px; // because we want it to be responseive
+  max-width: 600px; // because we want it to be responseive
   margin-left: auto;
   margin-right: auto;
   padding: 1em;
@@ -29,7 +29,6 @@ body {
   box-shadow: 0 0 20px 0 rgba(72, 94, 116, 0.7);
   background-color: #f9feff;
   border-radius: 10%;
-
 }
 
 .new_wrapper > * { // everything inside our wrapper
@@ -65,6 +64,7 @@ h1 {
   text-align: center;
   background-color: #79BAEC;
   margin: 0 auto;
+  border-radius: 2% 2% 0 0;
 }
 
 .form-control {
