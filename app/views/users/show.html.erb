@@ -1,35 +1,50 @@
-<h1>Profile Info</h1>
-<%= image_tag @user.profile_pic %>
-<p>Hello, <%= @user.name %>.</p>
-<p>Username: <%= @user.username %></p>
+<body id="user_show_body">
+  <h1>Profile Info</h1>
+  <div class="profile_intro">
+    <%= image_tag @user.profile_pic %>
 
+    <div class="user_show_greeting">
+      <p>Hello, <%= @user.name %>.</p>
+      <p>Username: <%= @user.username %></p>
+    </div>
 
-<% if @already_following %>
-  <%= button_to "Unfollow", follow_path(@already_following), method: :delete  %>
-<% else %>
-  <%= form_for @follow do |f| %>
-    <%= f.hidden_field :follower_id, value: current_user.id %>
-    <%= f.hidden_field :followed_id, value: @user.id %>
-    <%= f.submit "Follow" %>
-  <% end %>
-<% end %>
+  <div class="blue_box">
+      <!-- FOLLOWERS -->
+      <%= link_to "Following:  #{@user.following_follows.count}" , follows_with_path(@user) %>
+      <%= link_to "Followers:  #{@user.followed_follows.count}" , follows_with_path(@user) %>
+      <!-- END OF FOLLOWERS -->
 
-<!-- FOLLOWERS -->
- <%= link_to "Following:  #{@user.following_follows.count}" , follows_with_path(@user) %>
- <%= link_to "Followers:  #{@user.followed_follows.count}" , follows_with_path(@user) %>
-<!-- END OF FOLLOWERS -->
+      <div class="user_follow">
+        <% if @already_following %>
+        <%= button_to "Unfollow", follow_path(@already_following), method: :delete  %>
+        <% else %>
+        <%= form_for @follow do |f| %>
+        <%= f.hidden_field :follower_id, value: current_user.id %>
+        <%= f.hidden_field :followed_id, value: @user.id %>
+        <%= f.submit "Follow", class: "btn btn-outline-primary"%>
+        <% end %>
+        <% end %>
+      </div>
 
+      <% if current_user == @user %>
+      <%= link_to "Edit Profile", edit_user_path(@user), method: :get %>
+      <i class="fa fa-pencil" aria-hidden="true" style="font-size:24px"></i>
 
-<br>
-<% if current_user == @user %>
-  <%= button_to "Edit Profile", edit_user_path(@user), method: :get %>
-  <%= button_to "Delete Profile", user_path(@user), data: {:confirm => "Are you sure you want to delete your profile? \nThis cannot be undone."}, method: :delete %>
-<% end %>
-<hr>
-<br>
-<h2>All of <%= @user.username %>'s Posts</h2>
-<ul>
-<% @posts.each do |post| %>
-  <li><%= "#{post.caption[0..15]}..." %> <%= link_to "See Post", post_path(post)%></li>
-<% end %>
-</ul>
+      <%= link_to "Delete Profile", user_path(@user), data: {:confirm => "Are you sure you want to delete your profile? \nThis cannot be undone."}, method: :delete %>
+      <i class="fa fa-trash-o" aria-hidden="true" style="font-size:24px"></i>
+
+      <% end %>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="user_post_section">
+    <h2>All of <%= @user.username %>'s Posts</h2>
+    <ul style="list-style-type: none;">
+      <% @posts.each do |post| %>
+      <li><%= "#{post.caption[0..15]}..." %> <%= link_to "See Post", post_path(post)%></li>
+      <% end %>
+    </ul>
+  </div>
+</body>
