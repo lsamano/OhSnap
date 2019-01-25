@@ -27,9 +27,9 @@
 
   require 'open-uri'
 
-5.times do |n|
+7.times do |n|
   s = User.create(
-     username: Faker::Pokemon.name,
+     username: Faker::Pokemon.unique.name,
      name: Faker::Name.name,
      password_digest: BCrypt::Password.create('abc')
   )
@@ -40,7 +40,7 @@
 end
 
 User.all.each do |user|
-  2.times do |time|
+  3.times do |time|
     post = Post.new(caption: Faker::Lorem.sentence, user: user)
     post.image.attach({
        io: open("https://loremflickr.com/300/300"),
