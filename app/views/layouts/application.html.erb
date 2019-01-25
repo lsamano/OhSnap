@@ -26,6 +26,9 @@
         <a class="nav-link active" href="<%= new_post_path %>">+ Post <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="<%= user_path(current_user) %>">My Profile</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="<%= posts_path %>">My Timeline</a>
       </li>
       <li class="nav-item">
