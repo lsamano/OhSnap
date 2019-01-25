@@ -1,16 +1,29 @@
 <h1>Recent Posts</h1>
-  <div class="feed_container">
+  <div class="feed_container justify-content-center">
+    <div class="row">
+      <div class="card-deck" style="align-content: space-evenly;">
       <% @posts.each do |post| %>
-      <div class="row">
-      <div class="col-sm">
-        <!-- <div class="card" style="width: 18.9rem, height: 32rem;"> -->
-        <h4><%= link_to post.user.username, user_path(post.user) %>:</h4>
-        <blockquote><h2>
-          "<%= post.caption %>"
-        </h2></blockquote>
-        <a href="<%= post_path(post) %>"><%= image_tag post.image, class:"rounded" %></a>
-        <!-- </div> -->
+          <div class="col-sm-4">
+            <div class="card mb-3">
+              <div class="card-body">
+                <a href="<%= post_path(post) %>"><%= image_tag post.image, class:"rounded card-img-top shadow" %></a>
+
+            <blockquote>
+              <br>
+              <h2>
+                "<%= post.caption %>"
+              </h2>
+              <footer class=""><%= link_to post.user.username, user_path(post.user) %><br><%= time_ago_in_words(post.created_at) %> ago</footer>
+            </blockquote>
+
+              </div>
+            </div>
+          </div>
+              <% end %>
+        </div>
+
+
+
+
       </div>
-    </div>
-    <% end %>
   </div>
