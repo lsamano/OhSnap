@@ -1,17 +1,23 @@
 <h1><%= @category.name %></h1>
-
-<div class="users_container">
+<div class="feed_container justify-content-center">
   <div class="row">
+    <div class="card-deck" style="align-content: space-evenly;">
     <% @posts.each do |post| %>
-      <div class="col-sm">
-        <div class="card" style="width: 18.9rem;">
-          <%= image_tag post.image %>
-          <div class="card-body">
-            <h5 class="card-title"><%= post.caption %></h5>
-            <a href="<%= post_path(post) %>" class="btn btn-primary">See This Post</a>
+        <div class="col-sm-4">
+          <div class="card mb-3">
+            <div class="card-body">
+              <a href="<%= post_path(post) %>"><%= image_tag post.image, class:"rounded card-img-top shadow" %></a>
+
+          <blockquote>
+            <br>
+            <h2>
+              "<%= post.caption %>"
+            </h2>
+            <footer class=""><%= link_to post.user.username, user_path(post.user) %><br><%= time_ago_in_words(post.created_at) %> ago</footer>
+          </blockquote>
+
+            </div>
           </div>
         </div>
+            <% end %>
       </div>
-    <% end %>
-  </div>
-</div>
