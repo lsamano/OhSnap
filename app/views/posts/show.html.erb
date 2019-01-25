@@ -4,18 +4,31 @@
 
 <div class="post_show_wrapper">
   <div class="post_show_left">
+    <!-- making some crazy stuff -->
+    <div class="card mb-3" style= "width: 20rem;">
+      <div class="flip-container interests" ontouchstart="this.classList.toggle('hover');">
+        <div class="flipper">
 
-    <div class="card mb-3" style= "width: 20rem;"
-">
-      <%= image_tag @post.image, class: "post_img shadow card-img-top" %>
-      <h3 class= "post_cat">Categories</h3>
-      <ul style="list-style: none;">
-        <% @categories.each do |category|%>
-        <li><%= category.name %></li>
-        <% end %>
-      </ul>
+				      <div class="front">
+                <%= image_tag @post.image, class: "post_img" %>
+                <%= @post.caption %>
+              </div>
+
+              <div class="back">
+                <h3 class= "post_cat">Categories</h3>
+                <!-- <ul style="list-style: none;"> -->
+                  <% @categories.each do |category|%>
+                  <p><%= category.name %></p>
+                <!-- </ul> -->
+                <% end %>
+              </div>
+        </div>
+      </div>
     </div>
 
+
+
+    <!-- end of crazy stuff -->
     <% if @liked %>
     <div class="liked">
       <%= link_to "Unlike", like_path(@liked), method: :delete  %>
