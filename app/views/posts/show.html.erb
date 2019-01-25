@@ -47,7 +47,7 @@
     <%= form_for @like do |f| %>
     <%= f.hidden_field :user_id, value: current_user.id%>
     <%= f.hidden_field :post_id, value: @post.id %>
-    <%= f.submit "Like" %> + <%= @number_of_likes %>
+    <%= f.submit "Like   👍🏼", class: "btn btn-primary " %> + <%= @number_of_likes %>
     <% end %>
     <% end %>
 

@@ -16,7 +16,8 @@
 
       <div class="user_follow">
         <% if @already_following %>
-        <%= button_to "Unfollow", follow_path(@already_following), method: :delete  %>
+        <%= link_to "Unfollow", follow_path(@already_following), class: "btn btn-outline-primary", method: :delete %>
+
         <% else %>
         <%= form_for @follow do |f| %>
         <%= f.hidden_field :follower_id, value: current_user.id %>
