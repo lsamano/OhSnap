@@ -4,18 +4,31 @@
 
 <div class="post_show_wrapper">
   <div class="post_show_left">
-    <%= image_tag @post.image, class: "post_img shadow" %>
-    <h3 class= "post_cat">Categories</h3>
-    <ul>
-      <% @categories.each do |category|%>
-      <li><%= category.name %></li>
-      <% end %>
-    </ul>
+
+    <div class="card mb-3" style= "width: 20rem;"
+">
+      <%= image_tag @post.image, class: "post_img shadow card-img-top" %>
+      <h3 class= "post_cat">Categories</h3>
+      <ul style="list-style: none;">
+        <% @categories.each do |category|%>
+        <li><%= category.name %></li>
+        <% end %>
+      </ul>
+    </div>
 
     <% if @liked %>
     <div class="liked">
       <%= link_to "Unlike", like_path(@liked), method: :delete  %>
       <i class="fa fa-thumbs-o-up" style="font-size:24px"></i> + <%= @number_of_likes %>
+      <!-- <div class="edit_delete"> -->
+        <% if current_user == @user %>
+          <%= link_to "Edit Post", edit_post_path(@post), method: :get %>
+          <i class="fa fa-pencil" aria-hidden="true" style="font-size:24px"></i>
+
+          <%= link_to "Delete Post", post_path(@post), data: {:confirm => "Are you sure you want to delete this post? \nThis cannot be undone."}, method: :delete %>
+          <i class="fa fa-trash-o" aria-hidden="true" style="font-size:24px"></i>
+        <% end %>
+      <!-- </div> -->
     </div>
     <% else %>
     <%= form_for @like do |f| %>
@@ -25,15 +38,7 @@
     <% end %>
     <% end %>
 
-    <div class="edit_delete">
-      <% if current_user == @user %>
-        <%= link_to "Edit Post", edit_post_path(@post), method: :get %>
-        <i class="fa fa-pencil" aria-hidden="true"></i>
 
-        <%= link_to "Delete Post", post_path(@post), data: {:confirm => "Are you sure you want to delete this post? \nThis cannot be undone."}, method: :delete %>
-        <i class="fa fa-trash-o" aria-hidden="true"></i>
-      <% end %>
-    </div>
   </div>
 
 
