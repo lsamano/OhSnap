@@ -27,6 +27,8 @@
 
   require 'open-uri'
 
+new_users = []
+
 7.times do |n|
   s = User.create(
      username: Faker::Pokemon.unique.name,
@@ -37,13 +39,13 @@
      io: open("https://loremflickr.com/300/300"),
      filename: "#{n}_faker_image.jpg"
   })
+  new_users << s
 end
 
-User.all.each do |user|
-  3.times do |time|
-    post = Post.new(caption: Faker::Lorem.sentence, user: user)
+  10.times do |time|
+    post = Post.new(caption: Faker::Lorem.sentence, user: new_users.sample)
     post.image.attach({
-       io: open("https://loremflickr.com/300/300"),
+       io: open("http://lorempixel.com/300/300"),
        filename: "post_#{post.id}_faker_image.jpg"
     })
     post.save
@@ -53,4 +55,29 @@ User.all.each do |user|
         PostCategory.create(post: post, category: cat)
       end
   end
+
+18.times do |time|
+  Like.create(user: new_users.sample, post: Post.all.sample)
+  Follow.create(follower: new_users.sample, followed: new_users.sample)
+end
+
+15.times do |time|
+  post = Post.new(caption: Faker::Lorem.sentence, user: new_users.sample)
+  post.image.attach({
+     io: open("http://lorempixel.com/300/300"),
+     filename: "post_#{post.id}_faker_image.jpg"
+  })
+  post.save
+  number = rand(1..3)
+  cats = Category.all.sample(number)
+    cats.each do |cat|
+      PostCategory.create(post: post, category: cat)
+    end
+
+    Like.create(user: new_users.sample, post: Post.all.sample)
+    Follow.create(follower: new_users.sample, followed: new_users.sample)
+end
+
+60.times do |time|
+  Comment.create(user: new_users.sample, post: Post.all.sample, contents: Faker::Lorem.sentence(2))
 end
