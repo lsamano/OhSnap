@@ -1,12 +1,16 @@
 class PostsController < ApplicationController
 
+
+
+
   def index
-    @comment = Comment.new
-    if logged_in?
-      @posts = current_user.posts
-    else
-      @posts = Post.all.reverse # or force a login
-    end
+    @array = current_user.compile_timeline
+    # @comment = Comment.new
+    # if logged_in?
+    #   @posts = current_user.posts
+    # else
+    #   @posts = Post.all.reverse # or force a login
+    # end
   end
 
   def new

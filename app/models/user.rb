@@ -19,4 +19,47 @@ class User < ApplicationRecord
   has_many :followed_follows, class_name: "Follow", foreign_key: :followed_id
   has_many :followers, through: :followed_follows, source: :follower
 
+  # Returns an array of hashes to be converted to a timeline
+  def compile_timeline
+    array = []
+
+    # Gather all likes, comments, and posts of people you follow
+    self.followeds.each do |followed|
+      stuff = followed.posts
+      array << stuff
+      stuff = followed.likes
+      array << stuff
+      stuff = followed.comments
+      array << stuff
+    end
+    array.flatten!
+
+    # Order them newest first
+    # ordered_objects = array.sort_by(&:created_at)
+    # Convert to array of hashes
+    array.map! do |instance|
+      hash = {}
+      if instance.has_attribute?(:contents)
+        hash[:action] = "commented on a post"
+        hash[:post] = instance.post
+        hash[:user] = instance.user
+        hash[:created_at] = instance.created_at
+      elsif instance.has_attribute?(:caption)
+        hash[:action] = "posted a new post"
+        hash[:post] = instance
+        hash[:user] = instance.user
+        hash[:created_at] = instance.created_at
+      elsif instance.has_attribute?(:user_id)
+        hash[:action] = "liked a post"
+        hash[:post] = instance.post
+        hash[:user] = instance.user
+        hash[:created_at] = instance.created_at
+      end
+      hash
+    end
+
+    array.sort_by { |k| k[:created_at] }.reverse
+    # byebug
+  end
+
 end
