@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'welcome#index'
+  
   resources :post_categories
   resources :categories
   resources :posts
