@@ -8,8 +8,8 @@ local:
 
 amazon:
   service: S3
-  access_key_id: AMAZON KEY
-  secret_access_key: AMAZON SECRET
+  access_key_id: AKIAJJLISGBXEL4RY6YQ
+  secret_access_key: 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
 
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
