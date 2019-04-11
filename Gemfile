@@ -5,7 +5,7 @@ ruby '2.5.3'
 
 gem 'faker'
 
-gem 'bootstrap', '~> 4.2.1'
+gem "bootstrap", ">= 4.3.1"
 
 gem 'jquery-rails', '~> 4.1', '>= 4.1.1'
 gem 'bcrypt'
